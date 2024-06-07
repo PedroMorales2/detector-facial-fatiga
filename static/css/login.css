@@ -1,67 +1,87 @@
 body {
-    font-family: 'Lato', sans-serif; /* Usamos una tipografía más moderna y atractiva */
-    background: linear-gradient(to right, #74ebd5, #acb6e5); /* Fondo con degradado */
-    margin: 0;
-    padding: 20px;
+    font-family: 'Arial', sans-serif;
+    background-color: rgba(0, 0, 0, 0.886);
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-direction: column;
     min-height: 100vh;
+    margin: 0;
 }
 
-.container {
-    background-color: #fff;
-    padding: 40px;
+.login-container {
+    background-color: rgba(255, 255, 255, 0.374);
+    padding: 40px 60px;
     border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
     text-align: center;
+    width: 100%;
+    max-width: 360px;
 }
 
 h1 {
-    color: #333;
-    margin-bottom: 30px;
-    font-size: 24px;
+    color: white;
+    margin-bottom: 24px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
-    color: #666;
-    text-align: left;
-}
-
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    padding: 12px;
+.input-group {
     margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: all 0.3s ease-in-out;
 }
 
-input[type="email"]:focus,
-input[type="password"]:focus {
-    border-color: #74ebd5;
-    box-shadow: 0 0 8px rgba(116, 235, 213, 0.75);
-}
-
-button {
+input[type="email"], input[type="password"] {
     width: 100%;
-    padding: 15px;
-    background-color: #3498DB;
+    padding: 12px 20px;
+    margin-top: 8px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.login-button {
+    width: 100%;
+    padding: 14px 20px;
+    background-color: #5C67F2;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
-    font-size: 18px;
-    transition: background-color 0.3s;
+    font-size: 16px;
+    transition: background-color 0.2s;
 }
 
-button:hover {
-    background-color: #2980B9;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+.login-button:hover {
+    background-color: #2dbd43; /* Darker shade for hover */
 }
+
+
+
+
+
+
+
+
+/* HTML: <div class="loader"></div> */
+.loader {
+    display: inline-flex;
+    gap: 10px;
+  }
+  .loader:before,
+  .loader:after {
+    content: "";
+    height: 7rem;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background:
+      linear-gradient(#222 0 0) top/100% 0% no-repeat,
+      radial-gradient(farthest-side,#000 95%,#0000) 50%/8px 8px no-repeat
+      #fff;
+    animation: l9 4s infinite ease-in;
+  }
+  @keyframes l9 {
+    0%  {background-size:100% 0%,8px 8px;background-position:top, 50% 50%}
+    80% {background-size:100% 70%,8px 8px;background-position:top, 50% 70%}
+    84%,
+    100%{background-size:100% 0%,8px 8px;background-position:top, 50% 50%}
+  }
+
+  

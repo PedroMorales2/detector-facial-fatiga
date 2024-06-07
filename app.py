@@ -10,7 +10,6 @@ import pywhatkit
 app = Flask(__name__)
 app.secret_key = 'supersecretkey'
 
-# Configuración de Flask-Mail
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
@@ -121,7 +120,7 @@ def send_fatigue_report():
 @app.route('/stop_video', methods=['POST'])
 def stop_video():
     send_fatigue_report()
-    send_fatigue_whatsapp(fatigue_alerts)
+    # send_fatigue_whatsapp(fatigue_alerts)
     return jsonify({'message': 'Video detenido y reporte enviado.'})
 
 
@@ -154,16 +153,14 @@ def logout():
 
 
 
-def send_fatigue_whatsapp(alerts):
-    # Formatea tu lista de alertas para WhatsApp
-    message = "Reporte de Fatigas del Día:\n" + "\n".join(alerts)
-    now = datetime.now()
-    hour = now.hour
-    minute = now.minute + 2  # Asegúrate de dar suficiente tiempo para evitar errores
+# def send_fatigue_whatsapp(alerts):
+#     message = "Reporte de Fatigas del Día:\n" + "\n".join(alerts)
+#     now = datetime.now()
+#     hour = now.hour
+#     minute = now.minute + 2  # Asegúrate de dar suficiente tiempo para evitar errores
 
-    # Envía el mensaje
-    # Asegúrate de que el número de teléfono incluya el código de país correcto
-    pywhatkit.sendwhatmsg("+51923505083", message, hour, minute)
+#     # Envía el mensaje
+#     pywhatkit.sendwhatmsg("+51923505083", message, hour, minute)
 
 
 if __name__ == '__main__':

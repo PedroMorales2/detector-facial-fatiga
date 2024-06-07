@@ -4,3 +4,4 @@ opencv-python-headless
 dlib
 numpy
 pywhatkit
+scipy

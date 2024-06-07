@@ -7,15 +7,24 @@
     <link rel="stylesheet" href="/static/css/index.css">
     <script src="/static/js/main.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body>
+<body class="dark-mode">
+   
+    <div id="spinner" class="loading-overlay" style="display: none;">
+        <span class="loader"></span>
+    </div>
     
-    
+
+    <div class="theme-switch-wrapper">
+        <i id="toggleIcon" class="fas fa-moon"></i>
+    </div>
     <div class="container">
-        <h1>Video Streaming with Face Detection</h1>
-        <img src="{{ url_for('video_feed') }}" alt="Video Feed" class="img-fluid" onload="hideSpinner()">
+        
+        <h1>Video para la deteccion de FATIGA</h1>
+        <img src="{{ url_for('video_feed') }}" alt="Video Feed" class="img-fluid" >
         <audio id="alertSound" src="/static/alert.mp3"></audio>
         <div id="alertModal" class="modal" tabindex="-1" role="dialog">
             <div class="modal-dialog" role="document">
@@ -32,7 +41,7 @@
                 </div>
             </div>
         </div>
-        <div id="reportModal" class="modal fade" tabindex="-1" role="dialog">
+        <div id="reportModal" class="modal fade" tabindex="-1" role="dialog" onload="hideSpinner()">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -51,13 +60,28 @@
             </div>
         </div>
         
-        <div id="fatigueCounter">FATIGAS TOTALES DEL DIA: 0</div>
+        
         <br>
         <HR></HR>
         <div>
             <button id="stopButton" class="btn btn-danger">DETENER VIDEO</button>
             <button id="startButton" class="btn btn-success">INICIAR VIDEO</button>
             <a href="/logout" class="btn btn-primary"> CERRAR SESION</a>
+        </div>
+    </div>
+
+    <div class="profile-card">
+        <img src="/static/perfil.jpeg" alt="Profile Image" class="profile-image">
+        <div class="profile-info">
+            <h2>Pedro Morales Serrato</h2>
+            <p>Desarrollador de Software</p>
+            <p><i class="fas fa-envelope"></i> 72403333@usat.pe</p>
+            <p><i class="fas fa-phone"></i> +51 923505083</p>
+            <div class="social-links">
+                <a href="https://linkedin.com/in/juanperez" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="https://github.com/PedroMorales2/detector-facial-fatiga.git" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://twitter.com/juanperez" target="_blank"><i class="fab fa-facebook"></i></a>
+            </div>
         </div>
     </div>
  
