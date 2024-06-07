@@ -13,11 +13,10 @@ app.secret_key = 'supersecretkey'
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
-app.config['MAIL_USERNAME'] = 'electronico4208978@gmail.com'
-app.config['MAIL_PASSWORD'] = 'aoym rhqf jkxy splu'
+app.config['MAIL_USERNAME'] = ''
+app.config['MAIL_PASSWORD'] = ''
 mail = Mail(app)
 
-# Variables globales
 fatigue_detected = False
 fatigue_alerts = []
 
@@ -57,7 +56,7 @@ def calibrate_ear(detector, predictor):
         calibrated_ear = sum(ear_values) / len(ear_values)
         return calibrated_ear * 0.9
     else:
-        return 0.3  # Valor predeterminado si la calibración falla
+        return 0.3  
 
 def gen_frames(detector, predictor, EAR_THRESHOLD):
     global fatigue_detected
@@ -103,7 +102,7 @@ def gen_frames(detector, predictor, EAR_THRESHOLD):
 def check_fatigue():
     global fatigue_detected
     result = {'isFatigued': fatigue_detected}
-    fatigue_detected = False  # Reset the fatigue detection after checking
+    fatigue_detected = False 
     return jsonify(result)
 
 def send_fatigue_report():
@@ -115,12 +114,11 @@ def send_fatigue_report():
                       recipients=[user_email])
         msg.html = render_template('reporte_fatiga.html', total_fatigas=len(fatigue_alerts), alertas=fatigue_alerts)
         mail.send(msg)
-        fatigue_alerts = []  # Reset the list after sending the report
+        fatigue_alerts = [] 
         
 @app.route('/stop_video', methods=['POST'])
 def stop_video():
     send_fatigue_report()
-    # send_fatigue_whatsapp(fatigue_alerts)
     return jsonify({'message': 'Video detenido y reporte enviado.'})
 
 
@@ -151,16 +149,6 @@ def logout():
     session.pop('user_email', None)
     return redirect(url_for('index'))
 
-
-
-# def send_fatigue_whatsapp(alerts):
-#     message = "Reporte de Fatigas del Día:\n" + "\n".join(alerts)
-#     now = datetime.now()
-#     hour = now.hour
-#     minute = now.minute + 2  # Asegúrate de dar suficiente tiempo para evitar errores
-
-#     # Envía el mensaje
-#     pywhatkit.sendwhatmsg("+51923505083", message, hour, minute)
 
 
 if __name__ == '__main__':

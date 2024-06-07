@@ -50,17 +50,9 @@ input[type="email"], input[type="password"] {
 }
 
 .login-button:hover {
-    background-color: #2dbd43; /* Darker shade for hover */
+    background-color: #2dbd43; 
 }
 
-
-
-
-
-
-
-
-/* HTML: <div class="loader"></div> */
 .loader {
     display: inline-flex;
     gap: 10px;

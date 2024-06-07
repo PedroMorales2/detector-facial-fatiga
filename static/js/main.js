@@ -4,17 +4,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const startButton = document.getElementById('startButton');
     const audio = document.getElementById('alertSound');
     const modal = document.getElementById('alertModal');
-    const reportModal = $('#reportModal'); // Use jQuery for modal handling if Bootstrap JS is included
+    const reportModal = $('#reportModal'); 
     const fatigueCounterElement = document.getElementById('fatigueCounter');
-    const spinner = document.getElementById('spinner'); // Get the spinner element
-    let fatigueCount = 0;  // Initialize the fatigue count
+    const spinner = document.getElementById('spinner'); 
+    let fatigueCount = 0;  
 
     function showSpinner() {
-        spinner.style.display = 'block'; // Display the spinner
+        spinner.style.display = 'block';
     }
 
     function hideSpinner() {
-        spinner.style.display = 'none'; // Hide the spinner
+        spinner.style.display = 'none'; 
     }
 
     function checkFatigue() {
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 if (data.isFatigued) {
                     $(modal).modal('show');
                     audio.play();
-                    fatigueCount++;  // Incrementa el contador de fatiga
+                    fatigueCount++;  
                     fatigueCounterElement.textContent = `FATIGAS TOTALES DEL DIA: ${fatigueCount}`;
                 } else {
                     $(modal).modal('hide');
@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .then(response => response.json())
             .then(data => {
                 hideSpinner();
-                reportModal.modal('show'); // Using Bootstrap's jQuery method to show the modal
+                reportModal.modal('show'); 
             });
     });
 
